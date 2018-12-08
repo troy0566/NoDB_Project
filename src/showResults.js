@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-class App extends Component {
-    return(){
-        render(
-
+import './App.css';
+class ShowResults extends Component {
+    render(){
+        let src = this.props.item;
+        return(
             <div>
-                <img src alt="nasa image" height="100" width="100"></img>
+                <img src alt="" height="100" width="100"></img>
             </div>
-        )
+        );
     }
 }
+
+export default ShowResults;

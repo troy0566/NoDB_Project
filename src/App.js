@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ShowResults from "./ShowResults";
 import './App.css';
 
 class App extends Component {
@@ -14,17 +15,15 @@ class App extends Component {
       axios.get('/api/data').then( response => {
       this.setState({ data: response.data });
     });
-
   }
      
-  render() {
-    console.log(this.state);
-    
+  render(){
+    if (this.state.data.collection)
+        var images = this.state.data.collection.items
+    )
     return (
-      <div className="App">
-        {this.state.data.map((item) => {
-            
-        })}    
+      <div>
+        <ShowResults images />
       </div>
     );
   }
