@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 class ShowResults extends Component {
     render(){
-        let src = this.props.item;
+       var displayimages = this.props.nasaimages
+       .filter(displayimages => !displayimages.endsWith("srt"))
+
         return(
             <div>
-                <img src alt="" height="100" width="100"></img>
+                <ul>
+                {displayimages.map((displayimage, index) => <li key={index}><img src= {displayimage}  className='img-responsive' /></li>)}        
+                </ul>
             </div>
         );
     }

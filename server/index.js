@@ -12,7 +12,6 @@ app.use(cors());
 
 app.get('/api/data', controller.getData)
 app.post('/api/data', controller.addData);
-//app.get('/api/data', controller.readData);
 app.put('/api/data/:id', controller.updateData);
 app.delete('/api/data/:id', controller.deleteData);
 
