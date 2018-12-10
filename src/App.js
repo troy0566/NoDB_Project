@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import axios from 'axios';
 import Card from './Card';
-//import ShowResults from './ShowResults.js';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +10,7 @@ class App extends Component {
     this.state = {
       data: [],
       items: [],
-      item: [],
+      item: []
     }
   }
   
@@ -39,57 +38,63 @@ class App extends Component {
       
   }
   
-  nextProperty = () => {
+  nextItem = () => {
     const newIndex = this.state.item.id+1;
     this.setState({
       item: this.state.items[newIndex]
     })
   }
 
-  prevProperty = () => {
+  prevItem = () => {
     const newIndex = this.state.item.id-1;
     this.setState({
       item: this.state.items[newIndex]
     })
   }
 
-  render(){
-    //const {item} = this.state;
+  addFavorite = () => {
+    const newIndex = this.state.item.id-1;
+    this.setState({
+      item: this.state.items[newIndex]
+    })
+  }
 
-    // var showitems = []; var items = [];
-    // if (this.state.data.collection !== 0){ //items.length
-    //     items = this.state.items;
-    //     showitems = items.map(item => {return item.links[0].href; })
-    //  }
-    
-    const {items, item} = this.state; 
+  
+  render(){
+    const {item} = this.state;
+   
     return (
       
       <div className="App">
           <section>
               <img src={logo} className="App-logo" alt="logo" />
-              <h1>Nada slideshow NoDB Project.</h1>
+              <h1>Nasa slideshow NoDB Project.</h1>
           </section>
 
-         <button onClick={() => this.prevProperty()} 
+         <button onClick={() => this.prevItem()} 
            disabled={this.state.item.id === 0}>Prev
          </button> 
 
-         <button onClick={() => this.nextProperty()} 
+         <button onClick={() => this.nextItem()} 
           disabled={this.state.item.id === this.state.items.length-1}>Next
          </button>
 
-         <div className="cards-slider"> 
-            <div className="cards-slider-wrapper">
-              
-              {/* {item.length !== 0 ? items.map(item =>(<Card key={item.id} item={item}/>)): "not ready"} */}
+
+         <div > 
+            <div>
               {item.length !== 0 ? <Card item={item}/>: "not ready"}
             </div>
          </div>
+      
+         <button onClick={() => this.AddFavorite()} 
+             disabled={this.state.items.length === 0}>Add to Favorites
+         </button>      
+      
+      
       </div>
+
     );
   }
 }
 export default App;
 
-{/* <ShowResults nasaimages = {showitems}/> */}

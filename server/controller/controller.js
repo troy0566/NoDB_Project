@@ -1,6 +1,7 @@
 const axios = require('axios');
 
 var data = [];
+var favorites = [];
 var id = 0;
 
 //data.push("This is a test");
@@ -12,22 +13,22 @@ const getData = (req, res, next) => {
     })};
     
   const addData = (req, res, next) => {
-    req.body.id = data.length;
-    data.push(req.body);
-    res.json(data);
+    req.body.id = favorites.length;
+    favorites.push(req.body);
+    res.json(favorite);
   };
   
   const deleteData = (req, res, next) => {
-    const index = data.findIndex(data => +data.id === +req.params.id);
-    students.splice(index, 1);
-    res.json(data);
+    const index = favorite.findIndex(favorite => +favorite.id === +req.params.id);
+    favorite.splice(index, 1);
+    res.json(favorite);
   };
   
   const updateData = (req, res, next) => {
-    const index = data.findIndex(data => +data.id === +req.params.id);
+    const index = favorite.findIndex(favorite => +favorite.id === +req.params.id);
   
-    data[index] = req.body;
-    res.json(data);
+    favorite[index] = req.body;
+    res.json(favorite);
   };
 
   module.exports = {
