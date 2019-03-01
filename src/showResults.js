@@ -15,7 +15,7 @@ class ShowResults extends Component {
         return(
             <div className="column">
                 <header>
-                    {displayimages.map((displayimage, index) => <div key={index}><img src= {displayimage}  className='img-responsive' /></div>)}        
+                    {displayimages.map((displayimage, index) => <div key={index}><img src= {displayimage} /></div>)}        
                 </header>
             </div>
 

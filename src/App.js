@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import axios from 'axios';
 import Card from './Card';
-import ShowResults from './showResults.js';
+import ShowResults from './showResults';
+import PrevNext from './PrevNext';
+import Fave from './Fave';
 import './App.css';
+const axios = require('axios');
 
 class App extends Component {
   constructor(props){
@@ -14,6 +16,12 @@ class App extends Component {
       item: [],
       favs: [],
     }
+    this.nextItem = this.nextItem.bind(this);
+    this.prevItem = this.prevItem.bind(this);
+
+    this.createFave = this.createFave.bind(this);
+    this.deleteFave = this.deleteFave.bind(this);
+  
   }
   
   componentDidMount(){
@@ -80,28 +88,31 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
               <h1>Nasa slideshow NoDB Project.</h1>
           </section>
-
-         <button onClick={() => this.prevItem()} 
+          <PrevNext handlePrev={this.prevItem}
+                    handleNext={this.nextItem} />
+         {/* <button onClick={() => this.prevItem()} 
            disabled={this.state.item.id === 0}>Prev
          </button> 
 
          <button onClick={() => this.nextItem()} 
           disabled={this.state.item.id === this.state.items.length-1}>Next
-         </button>
+         </button> */}
 
          <div > 
             <div>
               {item.length !== 0 ? <Card item={item}/>: "not ready"}
             </div>
          </div>
-      
-         <button onClick={() => this.createFave()} 
+
+         <Fave createFave={this.createFave}
+               deleteFave={this.deleteFave} />
+         {/* <button onClick={() => this.createFave()} 
              disabled={this.state.items.length === 0}>Add to Favorites
          </button>      
 
          <button onClick={() => this.deleteFave()} 
              disabled={this.state.items.length === 0}>Remove from Favorites
-         </button>
+         </button> */}
 
          <ShowResults favs = {this.state.favs}/>
 
